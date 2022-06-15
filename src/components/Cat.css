@@ -1,0 +1,9 @@
+.rainbow{
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); 
+    text-align:center;
+    margin: 20px auto;
+    width: 80vw;
+    color:#ffffff;
+    border-radius: 1em;
+    padding: 10px;
+    }
