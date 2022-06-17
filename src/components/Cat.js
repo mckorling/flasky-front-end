@@ -3,10 +3,14 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 
 const Cat = (props) => {
-  const [catAge, setCatAge] = useState(props.age);
-  const makeCatOlder = () => {
-    setCatAge(catAge + 1);
-  };
+  const catName = props.name;
+  const catColor = props.color;
+  const catAge = props.age;
+
+  // const makeCatOlder = () => {
+  //   props.setCatAgeCallback(props.id);
+  // };
+
   const [catSaying, setSaying] = useState(props.saying);
   const updateSaying = (event) => {
     let newSaying = event.target.value;
@@ -15,10 +19,7 @@ const Cat = (props) => {
     }
     setSaying(newSaying);
   };
-  const catName = props.name;
-  //const catSaying = props.saying;
-  //const catAge = props.age; using a state variable now for age
-  const catColor = props.color;
+
   return (
     <section className="rainbow">
       <h3>Name: {catName}</h3>
@@ -27,8 +28,12 @@ const Cat = (props) => {
         Change Saying: <input type="text" onChange={updateSaying}></input>
       </p>
       <p>
-        Age: {catAge} <button onClick={makeCatOlder}>old</button>
+        Age: {catAge}{" "}
+        <button onClick={() => props.setCatAgeCallback(props.id)}>old</button>
       </p>
+      <button onClick={() => props.deleteCatCallback(props.id)}>
+        Delete Cat
+      </button>
       <p>Color: {catColor}</p>
     </section>
   );
@@ -39,6 +44,8 @@ Cat.propTypes = {
   age: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired,
   saying: PropTypes.string.isRequired,
+  setCatAgeCallback: PropTypes.func.isRequired,
+  deleteCatCallback: PropTypes.func.isRequired,
 };
 
 export default Cat;
