@@ -1,8 +1,7 @@
 import "./CatList.css";
 import Cat from "./Cat";
 
-const CatList = (props) => {
-  const catData = props.catData; // where props.catData takes from App.js
+const CatList = ({ catData }) => {
   // const catComponenets = [];
   // for (let cat of catData) {
   //   catComponenets.push(
